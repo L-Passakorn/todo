@@ -1,0 +1,11 @@
+<div *ngIf="activities[3]">
+  <h1>id: {{ activities[3]._id }}</h1>
+  <h1>title: {{ activities[3].title }}</h1>
+  <h1>description: {{ activities[3].description }}</h1>
+  <h1>status: {{ activities[3].status }}</h1>
+  <img src= "{{activities[3].imgUrl}}" >
+  
+</div>
+<li *ngFor="let activity of activities">
+  <span>title: {{ activity.title }}</span>
+</li>
