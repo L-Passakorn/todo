@@ -6,4 +6,8 @@ const activityScheme = new mongoose.Schema({
     status: { type: String, required: true},
   });
 
+  activityScheme.statics.findByTitle = function (title) {
+    return this.where({ title: title })
+  }
+
   module.exports = mongoose.model("Activity", activityScheme);
