@@ -10,8 +10,13 @@ router.get('/', async (req, res) => {
     res.json(activity)
   });
 
-  router.get('/id/:id', async (req, res) => {
+router.get('/id/:id', async (req, res) => {
     const activity = await Activity.findById(req.params.id);
+    res.json(activity)
+  });
+
+router.get('/status/:status', async (req, res) => {
+    const activity = await Activity.findByStatus(req.params.status);
     res.json(activity)
   });
 
