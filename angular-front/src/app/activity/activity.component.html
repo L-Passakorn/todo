@@ -1,11 +1,37 @@
-<div *ngIf="activities[3]">
-  <h1>id: {{ activities[3]._id }}</h1>
-  <h1>title: {{ activities[3].title }}</h1>
-  <h1>description: {{ activities[3].description }}</h1>
-  <h1>status: {{ activities[3].status }}</h1>
-  <img src= "{{activities[3].imgUrl}}" >
-  
-</div>
-<li *ngFor="let activity of activities">
+<!-- <div class="activity-container" *ngIf="activities[3]">
+    <h1>id: {{ activities[3]._id }}</h1>
+    <h1>title: {{ activities[3].title }}</h1>
+    <h1>description: {{ activities[3].description }}</h1>
+    <h1>status: {{ activities[3].status }}</h1>
+    <img src="{{ activities[3].imgUrl }}" />
+</div> -->
+
+<div class="container">
+  <div class="activity-container">
+    <h1>Todo</h1>
+    <h3>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </h3>
+  </div>
+  <div class="activity-container">
+    <h1>Done</h1>
+    <h3>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </h3>
+  </div>
+</div>   
+<!-- <li *ngFor="let activity of activities">
   <span>title: {{ activity.title }}</span>
-</li>
+</li> -->
