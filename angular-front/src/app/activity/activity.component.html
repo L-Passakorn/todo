@@ -6,7 +6,19 @@
     <img src="{{ activities[3].imgUrl }}" />
 </div> -->
 
-<div class="container">
+<!-- <div class="container">
+  <div class="activity-container">
+    <h1>Planning</h1>
+    <h3>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </h3>
+  </div>
   <div class="activity-container">
     <h1>Todo</h1>
     <h3>
@@ -31,7 +43,57 @@
       est laborum.
     </h3>
   </div>
-</div>   
-<!-- <li *ngFor="let activity of activities">
-  <span>title: {{ activity.title }}</span>
+</div>    -->
+
+<!-- <li *ngFor="let done of doneList">
+  <span>title: {{ done.title }}</span>
 </li> -->
+
+<div class="container">
+  <div class="activity-container">
+    <h1>Planning</h1>
+    <div
+      cdkDropList
+      #planning_List="cdkDropList"
+      [cdkDropListData]="planList"
+      [cdkDropListConnectedTo]="[todo_List,done_List]"
+      class="example-list"
+      (cdkDropListDropped)="updateStatus('planning')"
+    >
+      <div class="example-box" *ngFor="let item of planList" cdkDrag>
+        {{ item.title }}
+      </div>
+    </div>
+  </div>
+  <div class="activity-container">
+    <h1>Todo</h1>
+    <div
+      cdkDropList
+      #todo_List="cdkDropList"
+      [cdkDropListData]="todoList"
+      [cdkDropListConnectedTo]="[planning_List,done_List]"
+      class="example-list"
+      (cdkDropListDropped)="updateStatus('todo')"
+    >
+      <div class="example-box" *ngFor="let item of todoList" cdkDrag>
+        {{ item.title }}
+      </div>
+    </div>
+  </div>
+  <div class="activity-container">
+    <h1>Done</h1>
+    <div
+      cdkDropList
+      #done_List="cdkDropList"
+      [cdkDropListData]="doneList"
+      [cdkDropListConnectedTo]="[planning_List,todo_List]"
+      class="example-list"
+      (cdkDropListDropped)="updateStatus('done')"
+    >
+      <div class="example-box" *ngFor="let item of doneList" cdkDrag>
+        {{ item.title }}
+      </div>
+    </div>
+  </div>
+  
+</div>

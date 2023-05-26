@@ -10,8 +10,8 @@ import { OnInit } from '@angular/core';
 })
 export class ActivityComponent implements OnInit {
   
-  activities: Activity[] = [];
   item?: Activity
+  activities: Activity[] = [];
   planList: Activity[] = [];
   todoList: Activity[] = [];
   doneList: Activity[] = [];
@@ -19,28 +19,38 @@ export class ActivityComponent implements OnInit {
 
   ngOnInit(): void {
     this.getActivities();
+    this.getPlanList();
+    this.getTodoList();
+    this.getDoneList();
   }
 
   getActivities() {
     this.activityService.getActivities()
       .subscribe(activities => this.activities = activities);
   }
-  // getPlanList() {
-  //   this.activityService.getActivities()
-  //     .subscribe(activities => this.planList = activities);
-  // }
-  // getTodoList() {
-  //   this.activityService.getActivities()
-  //     .subscribe(activities => this.todoList = activities);
-  // }
-  // getDoneList() {
-  //   this.activityService.getActivities()
-  //     .subscribe(activities => this.doneList = activities);
-  // }
+  
+  getPlanList(){
+    this.activityService.getByStatus("planning")
+      .subscribe(planning => this.planList = planning);
+  }
+  getTodoList(){
+    this.activityService.getByStatus("todo")
+      .subscribe(todo => this.todoList = todo);
+  }
+  getDoneList(){
+    this.activityService.getByStatus("done")
+      .subscribe(done => this.doneList = done);
+  }
 
   updateActivity() {
     if (this.item) {
-      this.activityService.updateActivity(this.item._id, this.item)
+      this.activityService.updateActivity(this.item).subscribe(()=>{this.getActivities(),this.item=undefined})
     }
   }
+  updateStatus(status: string) {
+    if (this.item) {
+      this.activityService.updateActivity({status: status}).subscribe(()=>{this.getActivities(),this.item=undefined})
+    }
+  }
+
 }
