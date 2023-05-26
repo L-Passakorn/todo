@@ -19,12 +19,16 @@ export class ActivityService {
   getActivity(id: string): Observable<Activity> {
     return this.http.get<Activity>(`${this.activitiesUrl}/id/${id}`)
   }
+  
+  getByStatus(status: string): Observable<Activity[]> {
+    return this.http.get<Activity[]>(`${this.activitiesUrl}/status/${status}`)
+  }
 
   deleteActivity(id: string): Observable<Activity> {
     return this.http.delete<Activity>(`${this.activitiesUrl}/${id}`)
   }
   
-  updateActivity(id: string, item: any): Observable<Activity> {
-    return this.http.put<Activity>(`${this.activitiesUrl}/${id}`, item)
+  updateActivity(item: any): Observable<Activity> {
+    return this.http.put<Activity>(`${this.activitiesUrl}/${item.id}`, item)
   }
 }
