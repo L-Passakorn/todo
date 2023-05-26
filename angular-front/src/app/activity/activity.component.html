@@ -56,9 +56,9 @@
       cdkDropList
       #planning_List="cdkDropList"
       [cdkDropListData]="planList"
-      [cdkDropListConnectedTo]="[todo_List,done_List]"
+      [cdkDropListConnectedTo]="[todo_List, done_List]"
       class="example-list"
-      (cdkDropListDropped)="updateStatus('planning')"
+      (cdkDropListDropped)="drop($event, 'planning')"
     >
       <div class="example-box" *ngFor="let item of planList" cdkDrag>
         {{ item.title }}
@@ -71,9 +71,9 @@
       cdkDropList
       #todo_List="cdkDropList"
       [cdkDropListData]="todoList"
-      [cdkDropListConnectedTo]="[planning_List,done_List]"
+      [cdkDropListConnectedTo]="[planning_List, done_List]"
       class="example-list"
-      (cdkDropListDropped)="updateStatus('todo')"
+      (cdkDropListDropped)="drop($event, 'todo')"
     >
       <div class="example-box" *ngFor="let item of todoList" cdkDrag>
         {{ item.title }}
@@ -86,14 +86,13 @@
       cdkDropList
       #done_List="cdkDropList"
       [cdkDropListData]="doneList"
-      [cdkDropListConnectedTo]="[planning_List,todo_List]"
+      [cdkDropListConnectedTo]="[planning_List, todo_List]"
       class="example-list"
-      (cdkDropListDropped)="updateStatus('done')"
+      (cdkDropListDropped)="drop($event, 'done')"
     >
       <div class="example-box" *ngFor="let item of doneList" cdkDrag>
         {{ item.title }}
       </div>
     </div>
   </div>
-  
 </div>
