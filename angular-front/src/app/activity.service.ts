@@ -29,6 +29,7 @@ export class ActivityService {
   }
 
   updateActivity(item: Activity): Observable<Activity> {
+    console.log(item)
     return this.http.put<Activity>(`${this.activitiesUrl}/${item._id}`, item)
   }
 }

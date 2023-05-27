@@ -17,6 +17,7 @@ export class ActivityComponent implements OnInit {
   planList: Activity[] = [];
   todoList: Activity[] = [];
   doneList: Activity[] = [];
+  activities_copy: Activity[] = [];
   constructor(private activityService: ActivityService,) { }
 
   ngOnInit(): void {
@@ -49,11 +50,11 @@ export class ActivityComponent implements OnInit {
       this.activityService.updateActivity(this.item).subscribe(() => { this.getActivities() })
     }
   }
-  // updateStatus(status: string){
-  //   if (this.item) {
-  //     this.activityService.updateActivity({ status: status }).subscribe(() => { this.getActivities()})
-  //   }
-  // }
+  updateStatus(status: string){
+    if (this.item) {
+      this.activityService.updateActivity({ status: status }).subscribe(() => { this.getActivities()})
+    }
+  }
   drop(event: CdkDragDrop<Activity[]>, status: string) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -64,8 +65,11 @@ export class ActivityComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
-      // this.activityService.updateActivity({ status: status }).subscribe(() => { this.getPlanList(), this.getTodoList(), this.getDoneList() })
-      console.log("status")
+      this.activityService.updateActivity({ status: status }).subscribe(() => { this.getPlanList(), this.getTodoList(), this.getDoneList() })
+      console.log(this.planList)
+      console.log(this.todoList)
+      console.log(this.doneList)
+      // console.log(this.activities.filter((e)=> e.status==status))
     }
   }
 }

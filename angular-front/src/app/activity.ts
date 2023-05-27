@@ -1,7 +1,7 @@
 export interface Activity {
-    _id: string;
-    title: string;
-    description: string;
+    _id?: string;
+    title?: string;
+    description?: string;
     status: string;
-    imgUrl: string;
+    imgUrl?: string;
   }
