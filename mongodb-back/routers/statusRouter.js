@@ -12,6 +12,11 @@ router.use(express.json())
 //     })
 // })
 
+router.get('/id:id', async (req, res) => {
+    const status = await Status.findById(req.params.id);
+    res.json(status)
+});
+
 router.post('/', async (req, res) => {
     console.log(req.body)
     
