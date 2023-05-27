@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+const Status = require('./Status')
 
 const activityScheme = new mongoose.Schema({
     title: { type: String, require: true},
     description: { type: String, required: true},
-    status: { type: String, default: 'planning'},
+    statusId: mongoose.SchemaTypes.ObjectId,
     imgUrl: {type: String}
   });
 
@@ -11,8 +12,12 @@ const activityScheme = new mongoose.Schema({
     return this.where({ title: title })
   }
 
-  activityScheme.statics.findByStatus = function (status) {
-    return this.where({ status: status })
+  // activityScheme.statics.findByStatus = function (status) {
+  //   return this.where({ status: status })
+  // }
+
+  activityScheme.statics.findByStatus = function(statusId){
+    return this.where({statusId})
   }
 
   module.exports = mongoose.model("Activity", activityScheme);
